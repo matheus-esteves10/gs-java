@@ -1,6 +1,9 @@
 package org.example;
 
+import java.util.Random;
+
 public class Report {
+    private int numeroProtocolo;
     private String local;
     private String dataChamado;
     private String descricao;
@@ -14,6 +17,18 @@ public class Report {
     }
 
     public Report() {}
+
+    public int getNumeroProtocolo() {
+        return numeroProtocolo;
+    }
+
+    public void setNumeroProtocolo() {
+        if(this.numeroProtocolo == 0) { // Verifica se o número de protocolo ainda não foi atribuído
+            Random random = new Random();
+            int numeroProtocoloAleatorio = random.nextInt(99999) + 1;
+            this.numeroProtocolo = numeroProtocoloAleatorio;
+        }
+    }
 
     public String getLocal() {
         return local;
