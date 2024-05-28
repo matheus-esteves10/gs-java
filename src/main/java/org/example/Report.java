@@ -2,21 +2,23 @@ package org.example;
 
 import java.util.Random;
 
-public class Report {
+public class Report extends Usuario {
     private int numeroProtocolo;
     private String local;
     private String dataChamado;
     private String descricao;
     private String detalhesOcorrencia;
 
-    public Report(String local, String dataChamado, String descricao, String detalhesOcorrencia) {
+
+    public Report(String local, String dataChamado, String descricao, String detalhesOcorrencia, String cpf) {
+        super(cpf);
         this.local = local;
         this.dataChamado = dataChamado;
         this.descricao = descricao;
         this.detalhesOcorrencia = detalhesOcorrencia;
     }
 
-    public Report() {}
+
 
     public int getNumeroProtocolo() {
         return numeroProtocolo;

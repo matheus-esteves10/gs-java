@@ -11,8 +11,8 @@ import java.nio.file.Paths;
 
 public class SalvaJson extends Report {
 
-    public SalvaJson(String local, String dataChamado, String descricao, String detalhesOcorrencia) {
-        super(local, dataChamado, descricao, detalhesOcorrencia);
+    public SalvaJson(String local, String dataChamado, String descricao, String detalhesOcorrencia, String cpf) {
+        super(local, dataChamado, descricao, detalhesOcorrencia, cpf);
         setNumeroProtocolo(); // Chama o método para gerar o número de protocolo
     }
 
