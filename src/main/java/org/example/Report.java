@@ -39,6 +39,14 @@ public class Report {
         this.descricao = descricao;
     }
 
+    public String getDetalhesOcorrencia() {
+        return detalhesOcorrencia;
+    }
+
+    public void setDetalhesOcorrencia(String detalhesOcorrencia) {
+        this.detalhesOcorrencia = detalhesOcorrencia;
+    }
+
     public double tipoReport(String descricao) {
         if (descricao.equalsIgnoreCase("Pesca ilegal")) {
             return 0;

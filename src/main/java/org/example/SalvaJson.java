@@ -15,20 +15,20 @@ public class SalvaJson extends Report {
     public void salvaJson() throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-        String fileName;
+        String nomeArquivo;
         if (tipoReport(this.getDescricao()) == 0) {
-            fileName = "pescaIlegal.json";
+            nomeArquivo = "pescaIlegal.json";
         } else if (tipoReport(this.getDescricao()) == 1) {
-            fileName = "descarteLixo.json";
+            nomeArquivo = "descarteLixo.json";
         } else if (tipoReport(this.getDescricao()) == 2) {
-            fileName = "resgateAnimal.json";
+            nomeArquivo = "resgateAnimal.json";
         } else {
             throw new IllegalArgumentException("Tipo de report desconhecido");
         }
 
         String json = gson.toJson(this);
 
-        try (FileWriter escrita = new FileWriter(fileName)) {
+        try (FileWriter escrita = new FileWriter(nomeArquivo)) {
             escrita.write(json);
         }
     }
