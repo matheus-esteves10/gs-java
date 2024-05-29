@@ -6,7 +6,6 @@ public class Usuario implements Checagem{
     private String cpf;
     private String email;
     private String senha;
-    @Expose(serialize = false)
     private int quantidadeReportsSolucionados;
 
     public Usuario(String cpf) {

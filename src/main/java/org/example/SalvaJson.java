@@ -10,25 +10,25 @@ import java.nio.file.Paths;
 
 
 public class SalvaJson {
-    private Report report;
     private ReportJson reportJson;
     public SalvaJson(Report report) {
         report.setNumeroProtocolo();
-        this.reportJson = new ReportJson(report.getCpf(), report.getEstado(), report.getCidade(), report.getBairro(), report.getRua(), report.getDataChamado(), report.getDescricao(), report.getDetalhesOcorrencia(), report.getNumeroProtocolo());
+        reportJson = new ReportJson(report.getCpf(), report.getEstado(), report.getCidade(), report.getBairro(), report.getRua(), report.getDataChamado(), report.getDescricao(), report.getDetalhesOcorrencia(), report.getNumeroProtocolo());
     }
 
     public void salvaJson() throws IOException {
+        Report report = new Report("");
         Gson gson = new GsonBuilder()
                 .excludeFieldsWithoutExposeAnnotation()
                 .create();
         String directoryPath = "D:\\gs-java\\src\\main\\PoliciaAmbiental\\";
         String nomeArquivo;
 
-        if (this.report.tipoReport(this.reportJson.descricao()) == 0) {
+        if (report.tipoReport(this.reportJson.descricao()) == 0) {
             nomeArquivo = "pescaIlegal" + this.reportJson.numeroProtocolo() + ".json";
-        } else if (this.report.tipoReport(this.reportJson.descricao()) == 1) {
+        } else if (report.tipoReport(this.reportJson.descricao()) == 1) {
             nomeArquivo = "descarteDeLixo" + this.reportJson.numeroProtocolo() + ".json";
-        } else if (this.report.tipoReport(this.reportJson.descricao()) == 2) {
+        } else if (report.tipoReport(this.reportJson.descricao()) == 2) {
             directoryPath = "D:\\gs-java\\src\\main\\Bombeiros\\";
             nomeArquivo = "resgateAnimal" + this.reportJson.numeroProtocolo() + ".json";
         } else {
@@ -39,7 +39,7 @@ public class SalvaJson {
 
         Files.createDirectories(Paths.get(directoryPath));
 
-        String json = gson.toJson(this.reportJson);
+        String json = gson.toJson(report);
 
         try (FileWriter escrita = new FileWriter(finalSave)) {
             escrita.write(json);

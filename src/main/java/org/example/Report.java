@@ -24,6 +24,10 @@ public class Report extends Usuario {
         this.detalhesOcorrencia = detalhesOcorrencia;
     }
 
+    public Report(String cpf) {
+        super(cpf);
+    }
+
     public int getNumeroProtocolo() {
         return numeroProtocolo;
     }
