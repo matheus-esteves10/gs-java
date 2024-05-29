@@ -4,21 +4,25 @@ import java.util.Random;
 
 public class Report extends Usuario {
     private int numeroProtocolo;
-    private String local;
+    private String estado;
+    private String cidade;
+    private String bairro;
+    private String rua;
     private String dataChamado;
     private String descricao;
     private String detalhesOcorrencia;
 
 
-    public Report(String local, String dataChamado, String descricao, String detalhesOcorrencia, String cpf) {
+    public Report(String cpf, String estado, String cidade, String bairro, String rua, String dataChamado, String descricao, String detalhesOcorrencia) {
         super(cpf);
-        this.local = local;
+        this.estado = estado;
+        this.cidade = cidade;
+        this.bairro = bairro;
+        this.rua = rua;
         this.dataChamado = dataChamado;
         this.descricao = descricao;
         this.detalhesOcorrencia = detalhesOcorrencia;
     }
-
-
 
     public int getNumeroProtocolo() {
         return numeroProtocolo;
@@ -32,12 +36,40 @@ public class Report extends Usuario {
         }
     }
 
-    public String getLocal() {
-        return local;
+    public void setNumeroProtocolo(int numeroProtocolo) {
+        this.numeroProtocolo = numeroProtocolo;
     }
 
-    public void setLocal(String local) {
-        this.local = local;
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public String getRua() {
+        return rua;
+    }
+
+    public void setRua(String rua) {
+        this.rua = rua;
     }
 
     public String getDataChamado() {

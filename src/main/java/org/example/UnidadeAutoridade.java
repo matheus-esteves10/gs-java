@@ -44,4 +44,6 @@ public class UnidadeAutoridade {
     public void setTipoUnidade(String tipoUnidade) {
         this.tipoUnidade = tipoUnidade;
     }
+
+
 }

@@ -9,25 +9,28 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 
-public class SalvaJson extends Report {
-
-    public SalvaJson(String local, String dataChamado, String descricao, String detalhesOcorrencia, String cpf) {
-        super(local, dataChamado, descricao, detalhesOcorrencia, cpf);
-        setNumeroProtocolo(); // Chama o método para gerar o número de protocolo
+public class SalvaJson {
+    private Report report;
+    private ReportJson reportJson;
+    public SalvaJson(Report report) {
+        report.setNumeroProtocolo();
+        this.reportJson = new ReportJson(report.getCpf(), report.getEstado(), report.getCidade(), report.getBairro(), report.getRua(), report.getDataChamado(), report.getDescricao(), report.getDetalhesOcorrencia(), report.getNumeroProtocolo());
     }
 
     public void salvaJson() throws IOException {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String directoryPath = "D:\\Global Solution - 1 semestre\\Java\\src\\main\\PoliciaAmbiental\\";
+        Gson gson = new GsonBuilder()
+                .excludeFieldsWithoutExposeAnnotation()
+                .create();
+        String directoryPath = "D:\\gs-java\\src\\main\\PoliciaAmbiental\\";
         String nomeArquivo;
 
-        if (tipoReport(this.getDescricao()) == 0) {
-            nomeArquivo = "pescaIlegal" + this.getNumeroProtocolo() + ".json";
-        } else if (tipoReport(this.getDescricao()) == 1) {
-            nomeArquivo = "descarteDeLixo" + this.getNumeroProtocolo() + ".json";
-        } else if (tipoReport(this.getDescricao()) == 2) {
-            directoryPath = "D:\\Global Solution - 1 semestre\\Java\\src\\main\\Bombeiros\\";
-            nomeArquivo = "resgateAnimal" + this.getNumeroProtocolo() + ".json";
+        if (this.report.tipoReport(this.reportJson.descricao()) == 0) {
+            nomeArquivo = "pescaIlegal" + this.reportJson.numeroProtocolo() + ".json";
+        } else if (this.report.tipoReport(this.reportJson.descricao()) == 1) {
+            nomeArquivo = "descarteDeLixo" + this.reportJson.numeroProtocolo() + ".json";
+        } else if (this.report.tipoReport(this.reportJson.descricao()) == 2) {
+            directoryPath = "D:\\gs-java\\src\\main\\Bombeiros\\";
+            nomeArquivo = "resgateAnimal" + this.reportJson.numeroProtocolo() + ".json";
         } else {
             throw new IllegalArgumentException("Tipo de report desconhecido");
         }
@@ -36,7 +39,7 @@ public class SalvaJson extends Report {
 
         Files.createDirectories(Paths.get(directoryPath));
 
-        String json = gson.toJson(this);
+        String json = gson.toJson(this.reportJson);
 
         try (FileWriter escrita = new FileWriter(finalSave)) {
             escrita.write(json);
