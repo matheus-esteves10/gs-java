@@ -23,7 +23,7 @@ public class SalvaJson {
         Gson gson = new GsonBuilder()
                 .setPrettyPrinting()
                 .create();
-        String directoryPath = "D:\\Global Solution - 1 semestre\\Java\\src\\main\\Bombeiros\\";
+
         String nomeArquivo;
 
         if (report.tipoReport(this.reportJson.descricao()) == 0) {
@@ -31,15 +31,13 @@ public class SalvaJson {
         } else if (report.tipoReport(this.reportJson.descricao()) == 1) {
             nomeArquivo = "descarteDeLixo" + this.reportJson.numeroProtocolo() + ".json";
         } else if (report.tipoReport(this.reportJson.descricao()) == 2) {
-            directoryPath = "D:\\Global Solution - 1 semestre\\Java\\src\\main\\PoliciaAmbiental";
             nomeArquivo = "resgateAnimal" + this.reportJson.numeroProtocolo() + ".json";
         } else {
             throw new IllegalArgumentException("Tipo de report desconhecido");
         }
 
-        String finalSave = directoryPath + nomeArquivo;
+        String finalSave = nomeArquivo;
 
-        Files.createDirectories(Paths.get(directoryPath));
 
         String json = gson.toJson(reportJson);
 
