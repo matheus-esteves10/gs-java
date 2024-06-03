@@ -11,7 +11,9 @@ import java.nio.file.Paths;
 
 public class SalvaJson {
     private ReportJson reportJson;
+    private Report report;
     public SalvaJson(Report report) {
+        this.report = report;
         report.setNumeroProtocolo();
         reportJson = new ReportJson(report.getCpf(), report.getEstado(), report.getCidade(), report.getBairro(), report.getRua(), report.getDataChamado(), report.getDescricao(), report.getDetalhesOcorrencia(), report.getNumeroProtocolo());
     }
@@ -19,9 +21,9 @@ public class SalvaJson {
     public void salvaJson() throws IOException {
         Report report = new Report("");
         Gson gson = new GsonBuilder()
-                .excludeFieldsWithoutExposeAnnotation()
+                .setPrettyPrinting()
                 .create();
-        String directoryPath = "D:\\gs-java\\src\\main\\PoliciaAmbiental\\";
+        String directoryPath = "D:\\Global Solution - 1 semestre\\Java\\src\\main\\Bombeiros\\";
         String nomeArquivo;
 
         if (report.tipoReport(this.reportJson.descricao()) == 0) {
@@ -29,7 +31,7 @@ public class SalvaJson {
         } else if (report.tipoReport(this.reportJson.descricao()) == 1) {
             nomeArquivo = "descarteDeLixo" + this.reportJson.numeroProtocolo() + ".json";
         } else if (report.tipoReport(this.reportJson.descricao()) == 2) {
-            directoryPath = "D:\\gs-java\\src\\main\\Bombeiros\\";
+            directoryPath = "D:\\Global Solution - 1 semestre\\Java\\src\\main\\PoliciaAmbiental";
             nomeArquivo = "resgateAnimal" + this.reportJson.numeroProtocolo() + ".json";
         } else {
             throw new IllegalArgumentException("Tipo de report desconhecido");
@@ -39,7 +41,8 @@ public class SalvaJson {
 
         Files.createDirectories(Paths.get(directoryPath));
 
-        String json = gson.toJson(report);
+        String json = gson.toJson(reportJson);
+
 
         try (FileWriter escrita = new FileWriter(finalSave)) {
             escrita.write(json);

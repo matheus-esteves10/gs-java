@@ -21,8 +21,10 @@ public class Main {
             report.setDescricao(descricao);
 
 
+
             System.out.println("Informe o seu cpf: ");
             String cpf = scanner.nextLine();
+            report.setCpf(cpf);
             System.out.println("Qual é o estado do ocorrido?: ");
             String estado = scanner.nextLine();
             report.setEstado(estado);
@@ -44,7 +46,7 @@ public class Main {
             System.out.println("Obrigado pela solicitação. Caso a solicitação concretize alguma ajuda você ganhará 1 ponto no sistema. Esses pontos poderão ser trocados por descontos em algumas empresas");
 
 
-            SalvaJson json = new SalvaJson(new Report(report.getCpf(), report.getEstado(), report.getCidade(), report.getBairro(), report.getRua(), report.getDataChamado(), report.getDescricao(), report.getDetalhesOcorrencia()));
+            SalvaJson json = new SalvaJson(report);
             System.out.println(report.getCidade());
             try {
                 json.salvaJson();
