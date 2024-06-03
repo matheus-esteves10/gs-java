@@ -18,7 +18,7 @@ public class SalvaJson {
         reportJson = new ReportJson(report.getCpf(), report.getEstado(), report.getCidade(), report.getBairro(), report.getRua(), report.getDataChamado(), report.getDescricao(), report.getDetalhesOcorrencia(), report.getNumeroProtocolo());
     }
 
-    public void salvaJson() throws IOException {
+    public void salvaJson() throws IOException { //método que nomeia e salva as informações do chamado em um json (simulação de banco de dados)
         Report report = new Report("");
         Gson gson = new GsonBuilder()
                 .setPrettyPrinting()

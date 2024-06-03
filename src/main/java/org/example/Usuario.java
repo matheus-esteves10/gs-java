@@ -17,7 +17,11 @@ public class Usuario implements Checagem{
     }
 
     public void setCpf(String cpf) {
-        this.cpf = cpf;
+        if (checagem(cpf)) {
+            this.cpf = cpf;
+        } else {
+            throw new RuntimeException("CPF INVÁLIDO");
+        }
     }
 
     public int getQuantidadeReportsSolucionados() {
@@ -28,7 +32,7 @@ public class Usuario implements Checagem{
         this.quantidadeReportsSolucionados = quantidadeReportsSolucionados;
     }
 
-    public boolean quantidadeInformadaAtendimentosIsTrue(int quantidadeReportsSolucionados){
+    public boolean quantidadeInformadaAtendimentosIsTrue(int quantidadeReportsSolucionados){ //método que verifica a validade da informação: quantidade de reports solucionados
         if (quantidadeReportsSolucionados == getQuantidadeReportsSolucionados()){
             return true;
         }
@@ -36,12 +40,12 @@ public class Usuario implements Checagem{
     }
 
     @Override
-    public double checagem(int quantidadeReportsSolucionados) {
+    public double checagem(int quantidadeReportsSolucionados) { //método que retorna o benefício do usuário por report solucionado (50 centavos de desconto em parceiros por report)
         double valorPontos = quantidadeReportsSolucionados / 2.0;
         return valorPontos;
     }
 
-    public boolean checagem(String cpf) {
+    public boolean checagem(String cpf) { //método criado para checar a validade do cpf informado pelo usuário no momento de cadastro no sistema
         cpf = cpf.replaceAll("\\D", "");
 
         if (cpf.length() != 11) {

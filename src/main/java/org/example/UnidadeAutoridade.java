@@ -1,11 +1,12 @@
 package org.example;
 
-public class UnidadeAutoridade {
+public class UnidadeAutoridade implements Checagem{
 
     private String nomeUnidade;
     private String telefone;
     private String endereco;
     private String tipoUnidade;
+    private int quantidadeReportsSolucionados;
 
     public UnidadeAutoridade(String nomeUnidade, String telefone, String endereco, String tipoUnidade) {
         this.nomeUnidade = nomeUnidade;
@@ -45,5 +46,17 @@ public class UnidadeAutoridade {
         this.tipoUnidade = tipoUnidade;
     }
 
+    public int getQuantidadeReportsAtendidos() {
+        return quantidadeReportsSolucionados;
+    }
 
+    public void setQuantidadeReportsAtendidos(int quantidadeReportsAtendidos) {
+        this.quantidadeReportsSolucionados = quantidadeReportsAtendidos;
+    }
+
+    @Override // a unidade que mais resolver chamados no ano receberá a bonificação descrita do método (5 reais por report solucionado). Esse método é válido somente para a unidade CAMPEÃ.
+    public double checagem(int quantidadeReportsSolucionados) {
+        int valorBonusUnidade = quantidadeReportsSolucionados * 5;
+        return  valorBonusUnidade;
+    }
 }

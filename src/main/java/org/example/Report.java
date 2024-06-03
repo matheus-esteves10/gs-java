@@ -100,7 +100,7 @@ public class Report extends Usuario {
         this.detalhesOcorrencia = detalhesOcorrencia;
     }
 
-    public double tipoReport(String descricao) {
+    public double tipoReport(String descricao) { //método que verifica o tipo de chamado para futuramente nomear corretamente o arquivo json
         if (descricao.equalsIgnoreCase("Pesca ilegal")) {
             return 0;
         } else if (descricao.equalsIgnoreCase("Descarte de lixo")) {
