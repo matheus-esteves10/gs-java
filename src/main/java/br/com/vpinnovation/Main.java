@@ -1,4 +1,8 @@
-package org.example;
+package br.com.vpinnovation;
+
+import br.com.vpinnovation.informacoes.Usuario;
+import br.com.vpinnovation.recebeReport.Report;
+import br.com.vpinnovation.recebeReport.SalvaJson;
 
 import java.io.IOException;
 import java.util.Scanner;

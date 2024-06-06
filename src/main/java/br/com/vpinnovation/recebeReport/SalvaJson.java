@@ -1,12 +1,12 @@
-package org.example;
+package br.com.vpinnovation.recebeReport;
 
+import br.com.vpinnovation.recebeReport.Report;
+import br.com.vpinnovation.recebeReport.ReportJson;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 
 public class SalvaJson {

@@ -1,8 +1,6 @@
-package org.example;
+package br.com.vpinnovation.informacoes;
 
-import com.google.gson.annotations.Expose;
-
-public class Usuario implements Checagem{
+public class Usuario implements Checagem {
     private String cpf;
     private String email;
     private String senha;

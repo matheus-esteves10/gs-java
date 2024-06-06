@@ -1,6 +1,6 @@
-package org.example;
+package br.com.vpinnovation.informacoes;
 
-public class UnidadeAutoridade implements Checagem{
+public class UnidadeAutoridade implements Checagem {
 
     private String nomeUnidade;
     private String telefone;

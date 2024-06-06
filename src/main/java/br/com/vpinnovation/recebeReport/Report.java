@@ -1,4 +1,6 @@
-package org.example;
+package br.com.vpinnovation.recebeReport;
+
+import br.com.vpinnovation.informacoes.Usuario;
 
 import java.util.Random;
 
