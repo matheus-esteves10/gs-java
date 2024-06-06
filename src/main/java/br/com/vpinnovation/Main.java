@@ -51,7 +51,6 @@ public class Main {
 
 
             SalvaJson json = new SalvaJson(report);
-            System.out.println(report.getCidade());
             try {
                 json.salvaJson();
             } catch (IOException e) {
